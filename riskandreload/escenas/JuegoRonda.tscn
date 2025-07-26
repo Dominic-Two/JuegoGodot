@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0a8ongl2tut"]
+
+[ext_resource type="Script" uid="uid://datmbwtc3h0n1" path="res://scripts/juegoRonda.gd" id="1_okapd"]
+[ext_resource type="PackedScene" uid="uid://v0yscwkpw7l0" path="res://escenas/JuegoCartas.tscn" id="1_xwucj"]
+
+[node name="JuegoRonda" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_okapd")
+
+[node name="CartasJugador1" parent="." instance=ExtResource("1_xwucj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -2)
+
+[node name="CartasJugador2" parent="." instance=ExtResource("1_xwucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)

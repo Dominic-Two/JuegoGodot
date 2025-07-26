@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc57ae6imn6y1"]
+
+[ext_resource type="Script" uid="uid://cfcn1l0ttn5jk" path="res://scripts/main.gd" id="1_0kxa1"]
+[ext_resource type="PackedScene" uid="uid://0a8ongl2tut" path="res://escenas/JuegoRonda.tscn" id="1_d7u15"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eqdig"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7u15"]
+albedo_color = Color(0.331862, 0.192624, 0.0642527, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_d7u15"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 5, 0, 5.95369, -0.212106, 0.0262628, -5.95369, 0.212106, -0.0262628, 0, 5, 6, 0, 0, 0, 0, 0, 0, -6, 5, 0, -5.9307, 0.762978, 0.337466, 5.9307, -0.762978, -0.337466, 0, 5, -6),
+"tilts": PackedFloat32Array(0.528022, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0kxa1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_eqdig")
+surface_material_override/0 = SubResource("StandardMaterial3D_d7u15")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3.52485, 21.3823, 4.49087)
+light_energy = 2.178
+shadow_enabled = true
+
+[node name="JuegoRonda" parent="." instance=ExtResource("1_d7u15")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.5, 0)
+
+[node name="CaminoCamara" type="Path3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+curve = SubResource("Curve3D_d7u15")
+
+[node name="CamaraPivot" type="PathFollow3D" parent="CaminoCamara"]
+transform = Transform3D(0.706999, 0, -0.707053, 0, 0.999944, 0, 0.706999, 0, 0.707053, 6, 5, 0)
+rotation_mode = 1
+use_model_front = true
+
+[node name="Camera3D" type="Camera3D" parent="CaminoCamara/CamaraPivot"]
+transform = Transform3D(-4.37163e-08, -0.707154, 0.707198, 0, 0.707154, 0.707198, -1.00011, 3.09107e-08, -3.09126e-08, 0, 0, 0.5)
+rotation_order = 3
+current = true

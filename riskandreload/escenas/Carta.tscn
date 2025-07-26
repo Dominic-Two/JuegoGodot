@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxec0guw1f6jy"]
+
+[ext_resource type="Script" uid="uid://dh3mbupwyq3th" path="res://scripts/carta.gd" id="1_vog2r"]
+[ext_resource type="Material" uid="uid://bv1ght5x2st7q" path="res://materiales/material_carta_0.tres" id="2_vog2r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wt4c"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rofic"]
+
+[sub_resource type="Animation" id="Animation_5wt4c"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7i7bw"]
+resource_name = "seleccionada"
+step = 0.00416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuerpoCarta:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2625),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.9, 1.1, 1.5), Vector3(0.8, 1, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wt4c"]
+_data = {
+&"RESET": SubResource("Animation_5wt4c"),
+&"seleccionada": SubResource("Animation_7i7bw")
+}
+
+[node name="Carta3D" type="Node3D"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+script = ExtResource("1_vog2r")
+
+[node name="CuerpoCarta" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0.00051945, -3.36508e-05, -0.000623336, 1, 0.000239835, 2.53315e-05, -0.000149886, 1.6, 0, 0, 0)
+layers = 7
+material_override = SubResource("StandardMaterial3D_5wt4c")
+mesh = SubResource("PlaneMesh_rofic")
+surface_material_override/0 = ExtResource("2_vog2r")
+metadata/_edit_group_ = true
+
+[node name="Animador" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5wt4c")
+}
