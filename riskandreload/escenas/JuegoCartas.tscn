@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://v0yscwkpw7l0"]
-
-[ext_resource type="Script" uid="uid://dso4guv05fjp4" path="res://scripts/JuegoCartas.gd" id="1_ysowd"]
-
-[node name="JuegoCartas" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -0.614092, 0.789234, 0, -0.789234, -0.614092, -0.141934, 1.06817, -0.274277)
-script = ExtResource("1_ysowd")
